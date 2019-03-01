@@ -50,13 +50,20 @@ document.addEventListener('DOMContentLoaded', () => {
          const breed = document.querySelector("input[name='breed']").value
          const sex = document.querySelector("input[name='sex']").value
          const dogId = name.dataset.id
-         console.log(dogId)
 
          const dogData ={
              name: name.value,
              breed: breed,
              sex: sex
          }
+
+         
+         const dogBtn = document.querySelector(`tr[data-id="${dogId}"]`)
+         dogBtn.children[0].innerText= name.value
+         
+         dogBtn.children[1].innerText= breed
+         dogBtn.children[2].innerText= sex
+   
 
          fetch(`http://localhost:3000/dogs/${dogId}`, {
              method: 'PATCH',
